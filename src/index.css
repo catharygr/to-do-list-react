@@ -1,3 +1,61 @@
 body {
-  background-color: red;
+  background-color: #9feac8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff5252;
+  margin-bottom: 10px;
+}
+
+.todo-container {
+  margin: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-list li button {
+  margin-left: 10px;
+}
+span {
+  font-size: 16px;
+  color: #ff5252;
+}
+
+button {
+  font-size: 14px;
+  padding: 5px 10px;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff80ab;
+}
+
+button:focus {
+  outline: none;
 }
