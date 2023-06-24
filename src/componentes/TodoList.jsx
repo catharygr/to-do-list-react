@@ -4,20 +4,16 @@ import React from "react";
 export default function TodoList() {
   const [todos, setTodos] = React.useState([]);
 
-  // Funcion para agregar una nueva tarea a las lista de tareas
-  function addTodo(newTodo) {
-    setTodos([...todos, newTodo]);
-  }
   // Funcion para marcar una tarea como completada
-  function completeTodo(index) {
+  function completeTodo(id) {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+    newTodos[id].isCompleted = true;
     setTodos(newTodos);
   }
   // Funcion para eliminar una tarea de la lista
   function removeTodo() {
     const newTodos = [...todos];
-    newTodos.splice(index, 1);
+    newTodos.splice(id, 1);
     setTodos(newTodos);
   }
 
@@ -25,11 +21,11 @@ export default function TodoList() {
     <div className="todo-container">
       <h1>Todo List</h1>
       <ul className="todo-list">
-        {todos.map((todo, index) => (
-          <li key={index} className={todo.completed ? "completed" : ""}>
+        {todos.map((todo, id) => (
+          <li key={id} className={todo.completed ? "completed" : ""}>
             <span>{todo.task}</span>
-            <button onClick={() => completeTodo(index)}>Complete</button>
-            <button onClick={() => removeTodo(index)}>Delete</button>
+            <button onClick={() => completeTodo(id)}>Complete</button>
+            <button onClick={() => removeTodo(id)}>Delete</button>
           </li>
         ))}
       </ul>
