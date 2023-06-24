@@ -12,7 +12,6 @@ export default function AddTodo() {
         />
         <button type="submit">Add</button>
       </form>
-      q
     </div>
   );
 }
