@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function AddTodo({ addTodo }) {
-  const [newTodo, setNewTodo] = React.useState("");
+  const [newTodo, setNewTodo] = useState("");
 
-  function handleChange(value) {
-    setNewTodo(value);
+  function handleInputChange(event) {
+    setNewTodo(event.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (newTodo === "") return;
-    addTodo(newTodo);
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (newTodo.trim() === "") return;
+
+    addTodo(newTodo); // Llamada a la función addTodo pasando la nueva tarea como argumento
+
     setNewTodo("");
   }
 
@@ -22,7 +24,8 @@ export default function AddTodo({ addTodo }) {
           className="add-todo-input"
           type="text"
           value={newTodo}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={handleInputChange}
+          placeholder="Enter a new task"
         />
         <button className="add-todo-button" type="submit">
           Add

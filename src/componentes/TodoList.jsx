@@ -1,44 +1,68 @@
-/* eslint-disable no-undef */
-import React from "react";
+// TodoList.js
+import React, { useState, useEffect } from "react";
 
 export default function TodoList() {
-  const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
 
-  // Funcion para agregar una nueva tarea a la lista
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   function addTodo() {
+    if (newTodo === "") return;
+
+    const newTodos = [...todos, { task: newTodo, isCompleted: false }];
+    setTodos(newTodos);
+    setNewTodo("");
+  }
+
+  function handleComplete(index) {
     const newTodos = [...todos];
-    newTodos.push({
-      task: newTodo,
-      isCompleted: false,
-    });
+    newTodos[index].isCompleted = true;
     setTodos(newTodos);
   }
 
-  // Funcion para marcar una tarea como completada
-  function completeTodo(id) {
+  function handleRemove(index) {
     const newTodos = [...todos];
-    newTodos[id].isCompleted = true;
-    setTodos(newTodos);
-  }
-  // Funcion para eliminar una tarea de la lista
-  function removeTodo() {
-    const newTodos = [...todos];
-    newTodos.splice(id, 1);
+    newTodos.splice(index, 1);
     setTodos(newTodos);
   }
 
   return (
     <div className="todo-container">
-      <h1>Todo List</h1>
-      <ul className="todo-list">
-        {todos.map((todo, id) => (
-          <li key={id} className={todo.completed ? "completed" : ""}>
-            <span>{todo.task}</span>
-            <button onClick={() => completeTodo(id)}>Complete</button>
-            <button onClick={() => removeTodo(id)}>Delete</button>
+      <h1 className="todo-list">Todo List</h1>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo.task}
+            {!todo.isCompleted && (
+              <button
+                className="btn-complete"
+                onClick={() => handleComplete(index)}
+              >
+                Complete
+              </button>
+            )}
+            <button className="btn-delete" onClick={() => handleRemove(index)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button onClick={addTodo}>Add</button>
     </div>
   );
 }
