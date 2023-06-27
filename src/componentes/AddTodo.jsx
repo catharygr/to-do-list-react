@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function AddTodo() {
   const [newTodo, setNewTodo] = React.useState("");
 
@@ -7,7 +9,8 @@ export default function AddTodo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if
+    if (newTodo === "") return;
+  }
 
   return (
     <div>

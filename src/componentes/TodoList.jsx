@@ -4,6 +4,16 @@ import React from "react";
 export default function TodoList() {
   const [todos, setTodos] = React.useState([]);
 
+  // Funcion para agregar una nueva tarea a la lista
+  function addTodo() {
+    const newTodos = [...todos];
+    newTodos.push({
+      task: newTodo,
+      isCompleted: false,
+    });
+    setTodos(newTodos);
+  }
+
   // Funcion para marcar una tarea como completada
   function completeTodo(id) {
     const newTodos = [...todos];
