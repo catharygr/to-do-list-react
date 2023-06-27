@@ -59,3 +59,39 @@ button:hover {
 button:focus {
   outline: none;
 }
+
+/* Componente AddTodo */
+
+#add-todo-container {
+  margin-top: 20px;
+}
+
+.add-todo-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.add-todo-form {
+  margin-top: 10px;
+}
+
+.add-todo-input {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-todo-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-todo-button:hover {
+  background-color: #45a049;
+}
