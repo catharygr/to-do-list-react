@@ -3,35 +3,20 @@ import { useState } from "react";
 function AddTodo() {
   const [newTodo, setNewTodo] = useState("");
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     if (newTodo.trim() !== "") {
       const newTodoObj = {
-        todo: newTodo,
+        id: Date.now(),
+        text: newTodo,
+        completed: false,
       };
 
-      try {
-        const response = await fetch("https://example-api.com/todos", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newTodoObj),
-        });
-
-        if (response.ok) {
-          console.log("New todo successfully added to API");
-          // Aquí puedes realizar otras acciones después de agregar el nuevo todo a la API
-        } else {
-          console.log("Failed to add new todo to API");
-        }
-      } catch (error) {
-        console.log("Error:", error);
-      }
-
+      const newTodo = { ...newTodoObj, id: Date.now() };
+      console.log("New todo:", newTodo);
       setNewTodo("");
     }
-  };
+  }
 
   return (
     <div className="add-todo-container">
