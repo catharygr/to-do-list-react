@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddTodo() {
+function AddTodo({ todos, setTodos }) {
   const [newTodo, setNewTodo] = useState("");
 
   function handleSubmit(e) {
@@ -12,8 +12,7 @@ function AddTodo() {
         completed: false,
       };
 
-      const newTodo = { ...newTodoObj, id: Date.now() };
-      console.log("New todo:", newTodo);
+      setTodos([...todos, newTodoObj]);
       setNewTodo("");
     }
   }
