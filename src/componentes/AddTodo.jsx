@@ -1,37 +1,54 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function AddTodo({ addTodo }) {
+function AddTodo() {
   const [newTodo, setNewTodo] = useState("");
 
-  function handleInputChange(event) {
-    setNewTodo(event.target.value);
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (newTodo.trim() !== "") {
+      const newTodoObj = {
+        todo: newTodo,
+      };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (newTodo.trim() === "") return;
+      try {
+        const response = await fetch("https://example-api.com/todos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTodoObj),
+        });
 
-    addTodo(newTodo); // Llamada a la función addTodo pasando la nueva tarea como argumento
+        if (response.ok) {
+          console.log("New todo successfully added to API");
+          // Aquí puedes realizar otras acciones después de agregar el nuevo todo a la API
+        } else {
+          console.log("Failed to add new todo to API");
+        }
+      } catch (error) {
+        console.log("Error:", error);
+      }
 
-    setNewTodo("");
-  }
+      setNewTodo("");
+    }
+  };
 
   return (
-    <div id="add-todo-container">
-      <h1 className="add-todo-title">Add Todo</h1>
+    <div className="add-todo-container">
+      <h2 className="add-todo-title">Add Todo</h2>
       <form className="add-todo-form" onSubmit={handleSubmit}>
         <input
           className="add-todo-input"
           type="text"
           value={newTodo}
-          onChange={handleInputChange}
-          placeholder="Enter a new task"
+          onChange={(e) => setNewTodo(e.target.value)}
         />
         <button className="add-todo-button" type="submit">
-          Add
+          Add Todo
         </button>
       </form>
     </div>
   );
 }
+
+export default AddTodo;

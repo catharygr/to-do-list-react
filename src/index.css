@@ -31,7 +31,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.todo-list li button {
+.todo-list li .todo-item {
   margin-left: 10px;
 }
 
@@ -72,7 +72,7 @@ button:focus {
 
 /* Componente AddTodo */
 
-#add-todo-container {
+.add-todo-container {
   margin-top: 20px auto;
   padding: 10px;
   display: flex;
