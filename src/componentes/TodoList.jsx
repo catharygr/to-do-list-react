@@ -10,12 +10,12 @@ function TodoList() {
       setTodos(JSON.parse(storedTodos));
     }
   }, []);
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = () => {
+  const addTodo = (e) => {
+    e.preventDefault();
     if (newTodo.trim() !== "") {
       setTodos([...todos, newTodo]);
       setNewTodo("");
@@ -29,7 +29,7 @@ function TodoList() {
   };
 
   return (
-    <div className="todo-container">
+    <form onSubmit={addTodo} className="todo-container">
       <h2 className="todo-list">Todo List</h2>
       <ul>
         {todos.map((todo, index) => (
@@ -46,8 +46,8 @@ function TodoList() {
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button onClick={addTodo}>Add Todo</button>
-    </div>
+      <button>Add Todo</button>
+    </form>
   );
 }
 
