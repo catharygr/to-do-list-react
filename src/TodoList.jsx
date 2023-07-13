@@ -9,14 +9,11 @@ function TodoList({ handleAddItem }) {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-
           handleAddItem(label);
-
           setLabel("");
         }}
       >
-        <label htmlFor="nueva-lista-form-input">Nuevo item:</label>
-
+        <label htmlFor="new-list-form-input">Nuevo item:</label>
         <div className="fila">
           <input
             id="new-list-form-input"
