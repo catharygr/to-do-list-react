@@ -26,7 +26,7 @@ function TodoList({ handleAddItem }) {
               setLabel(event.target.value);
             }}
           />
-          <button>Add</button>
+          <button>Añadir</button>
         </div>
       </form>
     </div>
