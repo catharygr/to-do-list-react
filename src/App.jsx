@@ -16,9 +16,9 @@ function App() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="list-wrapper">
-        <ol className="shopping-list">
+    <div className="container">
+      <div className="lista-container">
+        <ol className="compra-lista">
           {items.map(({ id, label }) => (
             <li key={id}>{label}</li>
           ))}

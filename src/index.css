@@ -20,18 +20,18 @@ h1 {
   margin: 20px 0;
 }
 
-.wrapper {
+.container {
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.list-wrapper {
+.lista-container {
   flex: 1;
 }
 
-.shopping-list {
+.compra-lista {
   background: white;
   box-shadow: var(--shadow-elevation-high);
   border-radius: 8px;
@@ -41,38 +41,38 @@ h1 {
   list-style-type: none;
 }
 
-.shopping-list li {
+.compra-lista li {
   padding: 8px 0px;
   border-bottom: 1px dashed hsl(4deg 75% 65%);
 }
 
-.shopping-list li:first-of-type {
+.compra-lista li:first-of-type {
   padding-top: 0;
 }
 
-.shopping-list li:last-of-type {
+.compra-lista li:last-of-type {
   padding-bottom: 0;
   border-bottom: none;
 }
-.shopping-list li::marker {
+.compra-lista li::marker {
   color: hsl(4deg 75% 65%);
 }
 
-.new-list-item-form {
+.nueva-lista-item-form {
   background: white;
   box-shadow: var(--shadow-elevation-high);
   padding: 4px;
   border-radius: 8px;
 }
 
-.new-list-item-form form {
+.nueva-lista-item-form form {
   border: 2px dashed hsl(4deg 75% 65%);
   border-radius: 4px;
   padding: 16px;
   text-align: center;
 }
 
-.row {
+.fila {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -85,34 +85,24 @@ label {
   font-weight: 500;
 }
 
-.row input,
-.row button {
+.fila input,
+.fila button {
   height: 2.5rem;
   font-size: 1.125rem;
 }
 
-.row input {
+.fila input {
   flex: 4;
   min-width: 220px;
 }
 
-/* .row button {
-  flex: 1;
-  min-width: 90px;
-} */
-
-.new-list-item-form label {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.new-list-item-form input {
+.nueva-lista-item-form input {
   border: 1px solid black;
   padding: 5px;
   width: 100%;
 }
 
-.new-list-item-form button {
+.nueva-lista-item-form button {
   border: 1px solid black;
   padding: 5px;
   width: 100%;

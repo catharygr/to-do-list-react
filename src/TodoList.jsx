@@ -5,7 +5,7 @@ function TodoList({ handleAddItem }) {
   const [label, setLabel] = React.useState("");
 
   return (
-    <div className="new-list-item-form">
+    <div className="nueva-lista-item-form">
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -15,9 +15,9 @@ function TodoList({ handleAddItem }) {
           setLabel("");
         }}
       >
-        <label htmlFor="new-list-form-input">Nuevo item:</label>
+        <label htmlFor="nueva-lista-form-input">Nuevo item:</label>
 
-        <div className="row">
+        <div className="fila">
           <input
             id="new-list-form-input"
             type="text"
